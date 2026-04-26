@@ -14,6 +14,8 @@ from reportlab.lib.styles import getSampleStyleSheet
 st.title("📊 Timesheet Generator")
 
 # ---------------- INPUTS ----------------
+name = st.text_input("Enter Name")
+email = st.text_input("Enter Email ID")
 month_name = st.selectbox("Select Month", list(calendar.month_name)[1:])
 month = list(calendar.month_name).index(month_name)
 
@@ -98,18 +100,49 @@ if st.button("Generate Timesheet"):
     def generate_excel():
         output = BytesIO()
 
+        file_month = f"{month_name}"
+        sheet_name = f"{month_name[:3]} Timesheet"
+
         with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
-            df.to_excel(writer, index=False, sheet_name="Timesheet")
+            df.to_excel(writer, index=False, sheet_name=sheet_name, startrow=3)
 
-            worksheet = writer.sheets["Timesheet"]
+            workbook = writer.book
+            worksheet = writer.sheets[sheet_name]
 
+            # ---- FORMATS ----
+            header_format = workbook.add_format({
+                'bold': True,
+                'border': 1,
+                'align': 'center'
+            })
+
+            normal_format = workbook.add_format({
+                'border': 1
+            })
+
+            # ---- NAME + EMAIL ----
+            worksheet.write(0, 0, f"Name: {name}")
+            worksheet.write(1, 0, f"Email: {email}")
+
+            # ---- COLUMN WIDTH ----
             worksheet.set_column("A:A", 15)
             worksheet.set_column("B:B", 20)
             worksheet.set_column("C:C", 25)
 
-            start_row = len(df) + 2
+            # ---- APPLY HEADER FORMAT ----
+            for col_num, col_name in enumerate(df.columns):
+                worksheet.write(3, col_num, col_name, header_format)
 
-            worksheet.write(start_row, 0, "Summary")
+            # ---- APPLY CELL BORDER ----
+            for row in range(len(df)):
+                for col in range(len(df.columns)):
+                    worksheet.write(row + 4, col, df.iloc[row, col], normal_format)
+
+            # ---- SUMMARY ----
+            start_row = len(df) + 6
+
+            worksheet.write(start_row, 0, "Summary", header_format)
+
             worksheet.write(start_row + 1, 0, "Working Days")
             worksheet.write(start_row + 1, 1, working_days)
 
@@ -119,12 +152,6 @@ if st.button("Generate Timesheet"):
             worksheet.write(start_row + 3, 0, "Leaves")
             worksheet.write(start_row + 3, 1, leave_count)
 
-            worksheet.write(start_row + 4, 0, "Weekly Off")
-            worksheet.write(start_row + 4, 1, weekly_off_count)
-
-            worksheet.write(start_row + 6, 0, "Overall Summary")
-            worksheet.write(start_row + 7, 0, "Total Days")
-            worksheet.write(start_row + 7, 1, len(df))
 
         output.seek(0)
         return output
@@ -154,9 +181,7 @@ if st.button("Generate Timesheet"):
         summary_data = [
             ["Working Days", working_days],
             ["Holidays", holiday_count],
-            ["Leaves", leave_count],
-            ["Weekly Off", weekly_off_count],
-            ["Total Days", len(df)]
+            ["Leaves", leave_count]
         ]
 
         summary_table = Table(summary_data)
@@ -177,7 +202,7 @@ if st.button("Generate Timesheet"):
         st.download_button(
             "📥 Download Excel",
             data=generate_excel(),
-            file_name=f"{month_name}_{year}_timesheet.xlsx",
+            file_name = f"{name}'s Timesheet_{month_name}01-{month_name}{len(df)}, {year}.xlsx"
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
 
@@ -185,6 +210,6 @@ if st.button("Generate Timesheet"):
         st.download_button(
             "📄 Download PDF",
             data=generate_pdf(),
-            file_name=f"{month_name}_{year}_timesheet.pdf",
+            file_name = f"{name}'s Timesheet_{month_name}01-{month_name}{len(df)}, {year}.pdf"
             mime="application/pdf"
         )

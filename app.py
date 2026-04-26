@@ -202,7 +202,7 @@ if st.button("Generate Timesheet"):
         st.download_button(
             "📥 Download Excel",
             data=generate_excel(),
-            file_name = f"{name}'s Timesheet_{month_name}01-{month_name}{len(df)}, {year}.xlsx"
+            file_name = f"{name}'s Timesheet_{month_name}01-{month_name}{len(df)}, {year}.xlsx",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
 
@@ -210,6 +210,6 @@ if st.button("Generate Timesheet"):
         st.download_button(
             "📄 Download PDF",
             data=generate_pdf(),
-            file_name = f"{name}'s Timesheet_{month_name}01-{month_name}{len(df)}, {year}.pdf"
+            file_name = f"{name}'s Timesheet_{month_name}01-{month_name}{len(df)}, {year}.pdf",
             mime="application/pdf"
         )

@@ -170,8 +170,8 @@ st.markdown("## 📝 Timesheet Details")
 col1, col2 = st.columns(2)
 
 with col1:
-    name = st.text_input("Employee Name", placeholder="e.g., Sushma Motaharri")
-    email = st.text_input("Email ID", placeholder="e.g., sushma@company.com")
+    name = st.text_input("Employee Name", placeholder="e.g., Sushma Motamarri")
+    email = st.text_input("Email ID", placeholder="e.g., sushma@hankeranalytics.com")
     
 with col2:
     department = st.selectbox(

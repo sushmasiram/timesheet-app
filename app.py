@@ -301,7 +301,7 @@ def build_weeks(year, month, holiday_map):
 # WEEKLY WORK DETAILS - APPEAR BEFORE GENERATE BUTTON
 # =========================================================
 
-st.markdown("## 🗓 Weekly Work Details")
+st.markdown("### 🗓 Weekly Work Details")
 
 # Build holiday map and weeks
 holiday_map = build_holiday_map(location, year, month)

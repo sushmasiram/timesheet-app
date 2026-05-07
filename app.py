@@ -165,7 +165,7 @@ holiday_calendar = [
 # INPUTS SECTION
 # =========================================================
 
-st.markdown("###📝 Timesheet Details")
+st.markdown("### 📝 Timesheet Details")
 
 col1, col2 = st.columns(2)
 

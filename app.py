@@ -165,13 +165,13 @@ holiday_calendar = [
 # INPUTS SECTION
 # =========================================================
 
-st.markdown("### 📝 Timesheet Details")
+st.markdown("## 📝 Timesheet Details")
 
 col1, col2 = st.columns(2)
 
 with col1:
-    name = st.text_input("Employee Name", placeholder="e.g., Sushma Motamarri")
-    email = st.text_input("Email ID", placeholder="e.g., sushma@hankeranalytics.com")
+    name = st.text_input("Employee Name", placeholder="e.g., Sushma Motaharri")
+    email = st.text_input("Email ID", placeholder="e.g., sushma@company.com")
     
 with col2:
     department = st.selectbox(
@@ -259,8 +259,46 @@ def build_holiday_map(location, year, month):
         if h.get(location) == "Yes" and h["date"].startswith(f"{year}-{month:02d}")
     }
 
-
 def build_weeks(year, month, holiday_map):
+    """Build proper calendar week structure"""
+
+    num_days = calendar.monthrange(year, month)[1]
+
+    weeks_in_month = []
+
+    # calendar.monthcalendar creates proper week splits
+    month_calendar = calendar.monthcalendar(year, month)
+
+    for week in month_calendar:
+
+        working_days = []
+
+        for day in week:
+
+            # Skip empty calendar cells
+            if day == 0:
+                continue
+
+            date_obj = datetime(year, month, day)
+            date_str = date_obj.strftime("%Y-%m-%d")
+
+            # Skip weekends
+            if date_obj.weekday() >= 5:
+                continue
+
+            # Skip holidays
+            if date_str in holiday_map:
+                continue
+
+            working_days.append(day)
+
+        # Only append if week has working days
+        if working_days:
+            weeks_in_month.append(working_days)
+
+    return weeks_in_month
+
+def build_weeks_old(year, month, holiday_map):
     """Build week structure for the month"""
     num_days = calendar.monthrange(year, month)[1]
     working_dates = []
@@ -301,7 +339,7 @@ def build_weeks(year, month, holiday_map):
 # WEEKLY WORK DETAILS - APPEAR BEFORE GENERATE BUTTON
 # =========================================================
 
-st.markdown("### 🗓 Weekly Work Details")
+st.markdown("## 🗓 Weekly Work Details")
 
 # Build holiday map and weeks
 holiday_map = build_holiday_map(location, year, month)
@@ -435,47 +473,55 @@ if st.button("✅ Generate Timesheet", use_container_width=True):
                 'align': 'center',
                 'valign': 'vcenter',
                 'bg_color': '#CDE7F0',
-                'font_size': 11
+                'font_size': 11,
+                'text_wrap': True
             })
 
             title_format = workbook.add_format({
                 'bold': True,
                 'font_size': 12,
-                'border': 0
+                'border': 0,
+                'text_wrap': True
             })
 
             normal_format = workbook.add_format({
                 'border': 1,
                 'align': 'center',
-                'valign': 'vcenter'
+                'valign': 'vcenter',
+                'text_wrap': True,
+                'text_wrap': True
             })
 
             working_format = workbook.add_format({
                 'border': 1,
                 'align': 'center',
                 'valign': 'vcenter',
-                'bg_color': '#E8F6EF'
+                'bg_color': '#E8F6EF',
+                'text_wrap': True
             })
 
             weekend_format = workbook.add_format({
                 'border': 1,
                 'align': 'center',
                 'valign': 'vcenter',
-                'bg_color': '#F5F5F5'
+                'bg_color': '#F5F5F5',
+                'text_wrap': True
             })
 
             holiday_format = workbook.add_format({
                 'border': 1,
                 'align': 'center',
                 'valign': 'vcenter',
-                'bg_color': '#FFE6E6'
+                'bg_color': '#FFE6E6',
+                'text_wrap': True
             })
 
             leave_format = workbook.add_format({
                 'border': 1,
                 'align': 'center',
                 'valign': 'vcenter',
-                'bg_color': '#FFF4E6'
+                'bg_color': '#FFF4E6',
+                'text_wrap': True
             })
 
             # Header section

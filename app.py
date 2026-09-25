@@ -144,20 +144,24 @@ holiday_calendar = [
     {"date": "2025-10-20", "name": "Diwali", "Gurugram": "Yes", "Bengaluru": "Yes", "Chennai": "Yes", "Pune": "Yes", "Hyderabad": "Yes"},
     {"date": "2025-12-25", "name": "Christmas Day", "Gurugram": "Yes", "Bengaluru": "Yes", "Chennai": "Yes", "Pune": "Yes", "Hyderabad": "Yes"},
 
-    # 2026 Holidays
-    {"date": "2026-01-01", "name": "New Year's Day", "Gurugram": "Yes", "Bengaluru": "Yes", "Chennai": "Yes", "Pune": "Yes", "Hyderabad": "Yes"},
+    {"date": "2026-01-01", "name": "New Year’s Day", "Gurugram": "Yes", "Bengaluru": "Yes", "Chennai": "Yes", "Pune": "Yes", "Hyderabad": "Yes"},
+    {"date": "2026-01-15", "name": "Pongal", "Gurugram": "No", "Bengaluru": "No", "Chennai": "Yes", "Pune": "No", "Hyderabad": "Yes"},
     {"date": "2026-01-26", "name": "Republic Day", "Gurugram": "Yes", "Bengaluru": "Yes", "Chennai": "Yes", "Pune": "Yes", "Hyderabad": "Yes"},
-    {"date": "2026-03-06", "name": "Holi", "Gurugram": "Yes", "Bengaluru": "Yes", "Chennai": "Yes", "Pune": "Yes", "Hyderabad": "Yes"},
-    {"date": "2026-03-19", "name": "Eid ul-Fitr", "Gurugram": "Yes", "Bengaluru": "Yes", "Chennai": "Yes", "Pune": "Yes", "Hyderabad": "Yes"},
-    {"date": "2026-03-27", "name": "Ram Navami", "Gurugram": "Yes", "Bengaluru": "Yes", "Chennai": "Yes", "Pune": "Yes", "Hyderabad": "Yes"},
-    {"date": "2026-03-29", "name": "Mahavir Jayanti", "Gurugram": "Yes", "Bengaluru": "Yes", "Chennai": "Yes", "Pune": "Yes", "Hyderabad": "Yes"},
+    {"date": "2026-03-04", "name": "Holi", "Gurugram": "Yes", "Bengaluru": "Yes", "Chennai": "No", "Pune": "Yes", "Hyderabad": "No"},
+    {"date": "2026-03-19", "name": "Ugadi/Gudi Padwa", "Gurugram": "No", "Bengaluru": "Yes", "Chennai": "No", "Pune": "Yes", "Hyderabad": "Yes"},
+    {"date": "2026-04-03", "name": "Good Friday", "Gurugram": "Yes", "Bengaluru": "Yes", "Chennai": "No", "Pune": "No", "Hyderabad": "Yes"},
+    {"date": "2026-04-14", "name": "Tamil New Year", "Gurugram": "No", "Bengaluru": "No", "Chennai": "Yes", "Pune": "No", "Hyderabad": "No"},
     {"date": "2026-05-01", "name": "May/Maharashtra Day", "Gurugram": "No", "Bengaluru": "Yes", "Chennai": "Yes", "Pune": "Yes", "Hyderabad": "Yes"},
-    {"date": "2026-08-15", "name": "Independence Day", "Gurugram": "Yes", "Bengaluru": "Yes", "Chennai": "Yes", "Pune": "Yes", "Hyderabad": "Yes"},
-    {"date": "2026-09-07", "name": "Janmashtami", "Gurugram": "Yes", "Bengaluru": "Yes", "Chennai": "Yes", "Pune": "Yes", "Hyderabad": "Yes"},
+    {"date": "2026-06-02", "name": "Telangana Foundation Day", "Gurugram": "No", "Bengaluru": "No", "Chennai": "No", "Pune": "No", "Hyderabad": "Yes"},
+    {"date": "2026-08-28", "name": "Raksha Bandhan", "Gurugram": "Yes", "Bengaluru": "No", "Chennai": "No", "Pune": "No", "Hyderabad": "No"},
+    {"date": "2026-09-04", "name": "Janmashtami", "Gurugram": "Yes", "Bengaluru": "No", "Chennai": "No", "Pune": "No", "Hyderabad": "No"},
+    {"date": "2026-09-14", "name": "Ganesh Chaturthi", "Gurugram": "No", "Bengaluru": "Yes", "Chennai": "Yes", "Pune": "Yes", "Hyderabad": "Yes"},
     {"date": "2026-10-02", "name": "Gandhi Jayanti", "Gurugram": "Yes", "Bengaluru": "Yes", "Chennai": "Yes", "Pune": "Yes", "Hyderabad": "Yes"},
-    {"date": "2026-09-25", "name": "Dussehra", "Gurugram": "Yes", "Bengaluru": "Yes", "Chennai": "Yes", "Pune": "Yes", "Hyderabad": "Yes"},
-    {"date": "2026-10-13", "name": "Diwali", "Gurugram": "Yes", "Bengaluru": "Yes", "Chennai": "Yes", "Pune": "Yes", "Hyderabad": "Yes"},
+    {"date": "2026-10-20", "name": "Ayudha Pooja/Dussehra", "Gurugram": "Yes", "Bengaluru": "No", "Chennai": "Yes", "Pune": "Yes", "Hyderabad": "No"},
+    {"date": "2026-11-09", "name": "Govardhan Pooja", "Gurugram": "Yes", "Bengaluru": "Yes", "Chennai": "Yes", "Pune": "Yes", "Hyderabad": "No"},
     {"date": "2026-12-25", "name": "Christmas Day", "Gurugram": "Yes", "Bengaluru": "Yes", "Chennai": "Yes", "Pune": "Yes", "Hyderabad": "Yes"},
+
+   
 ]
 
 
